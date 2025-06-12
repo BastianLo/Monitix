@@ -60,33 +60,33 @@ class TagAPITests(TestCase):
         }
 
     def test_create_tag(self):
-        response = self.client.post('/api/tags/', self.tag_data, format='json')
+        response = self.client.post('/api/tag/', self.tag_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Tag.objects.count(), 1)
         self.assertEqual(Tag.objects.get().name, 'test-tag')
 
     def test_list_tags(self):
         Tag.objects.create(**self.tag_data)
-        response = self.client.get('/api/tags/')
+        response = self.client.get('/api/tag/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)
 
     def test_retrieve_tag(self):
         tag = Tag.objects.create(**self.tag_data)
-        response = self.client.get(f'/api/tags/{tag.id}/')
+        response = self.client.get(f'/api/tag/{tag.id}/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['name'], 'test-tag')
 
     def test_update_tag(self):
         tag = Tag.objects.create(**self.tag_data)
         update_data = {'name': 'updated-tag'}
-        response = self.client.patch(f'/api/tags/{tag.id}/', update_data, format='json')
+        response = self.client.patch(f'/api/tag/{tag.id}/', update_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         tag.refresh_from_db()
         self.assertEqual(tag.name, 'updated-tag')
 
     def test_delete_tag(self):
         tag = Tag.objects.create(**self.tag_data)
-        response = self.client.delete(f'/api/tags/{tag.id}/')
+        response = self.client.delete(f'/api/tag/{tag.id}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Tag.objects.count(), 0)
