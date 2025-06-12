@@ -80,7 +80,7 @@ export const useAuthStore = defineStore("authStore", {
                 this.set_refresh_token(jsonResponse["refresh"])
                 await this.get_user_information()
             }
-            return {"response": response, "message": jsonResponse.detail}
+            return {"response": response, details: jsonResponse }
         },
         async get_user_information() {
             const response = await authorizedFetch(baseUrl + '/auth/me/', {

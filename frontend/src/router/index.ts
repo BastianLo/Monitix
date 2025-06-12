@@ -15,17 +15,22 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue'),
     },
-        {
-            path: '/auth',
-            name: 'auth',
-            children: [
-                {
-                    path: 'login',
-                    name: 'login',
-                    component: () => import('../views/auth/login.vue')
-                },
-            ]
-        },
+    {
+      path: '/server',
+      name: 'serverHome',
+      component: () => import('../views/server/ServerHome.vue'),
+    },
+    {
+        path: '/auth',
+        name: 'auth',
+        children: [
+            {
+                path: 'login',
+                name: 'login',
+                component: () => import('../views/auth/login.vue')
+            },
+        ]
+    },
   ],
 })
 

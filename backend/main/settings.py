@@ -60,10 +60,10 @@ INSTALLED_APPS = [
     'drf_yasg',
     'dj_rest_auth',
     'dj_rest_auth.registration',
-    'pwa',
     "corsheaders",
     
-    'ApiManager'
+    'ApiManager',
+    'ServerManager',
 ]
 
 MIDDLEWARE = [
@@ -155,6 +155,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+SALT_KEY = 'vbfpvbrepwivbreguirbrejfkerbgjh4gbhwejh'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/

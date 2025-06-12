@@ -4,6 +4,9 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 import os
 from rest_framework import permissions
+from rest_framework.routers import DefaultRouter
+
+from ServerManager.views import ServerViewset, TagViewset, execute_command
 from .views import authentification_view
 from rest_framework_simplejwt.views import TokenBlacklistView
 
@@ -30,4 +33,12 @@ urlpatterns = [
     path('auth/logout/', TokenBlacklistView.as_view(), name='token_blacklist'),
     path('auth/me/', authentification_view.current_user, name='current_user'),
     path('auth/refresh/', authentification_view.RefreshTokenView.as_view(), name='token_obtain_pair'),
+    
+    path('server/<str:id>/execute', execute_command, name='execute_command'),
 ]
+
+
+router = DefaultRouter()
+router.register(r'server', ServerViewset, basename='server')
+router.register(r'tag', TagViewset, basename='tag')
+urlpatterns += router.urls
