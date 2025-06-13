@@ -9,8 +9,10 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Avatar: typeof import('primevue/avatar')['default']
+    Badge: typeof import('primevue/badge')['default']
     Button: typeof import('primevue/button')['default']
     Checkbox: typeof import('primevue/checkbox')['default']
+    ColorPicker: typeof import('primevue/colorpicker')['default']
     Column: typeof import('primevue/column')['default']
     ConfirmDialog: typeof import('primevue/confirmdialog')['default']
     DataTable: typeof import('primevue/datatable')['default']
@@ -27,6 +29,10 @@ declare module 'vue' {
     Password: typeof import('primevue/password')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ServerCreateDialog: typeof import('./src/components/server/ServerCreateDialog.vue')['default']
+    ServerEditDialog: typeof import('./src/components/server/ServerEditDialog.vue')['default']
+    ServerEditTagsDialog: typeof import('./src/components/server/ServerEditTagsDialog.vue')['default']
+    ServerTable: typeof import('./src/components/server/ServerTable.vue')['default']
     Sidebar: typeof import('primevue/sidebar')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     Toast: typeof import('primevue/toast')['default']

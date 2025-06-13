@@ -15,7 +15,10 @@ export const useServerStore = defineStore("serverStore", {
                     tags: server.tags.map((id: number) => {return useTagStore().tags.find(tag => tag.id === id)})
                 }
             })
-        }
+        },
+        serverById: (state) => {
+            return (id: number) => state.servers.find(server => server.id === id)
+        },
     },
     actions: {
         async fetchServers() {

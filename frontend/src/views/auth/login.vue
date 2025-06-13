@@ -13,13 +13,13 @@
         </div>
         <div class="space-x-2">
           <label for="password">Password</label>
-          <InputText id="password" v-model="password" aria-describedby="password-help" />
+          <Password :feedback="false" id="password" v-model="password" aria-describedby="password-help" />
           <p class="text-red-500" v-if="loginResponse?.details?.password">{{ loginResponse?.details?.password[0] }}</p>
         </div>
         <div>
           <Button @click="login()">Login</Button>
         </div>
-          <p class="text-red-500" v-if="loginResponse?.details?.detail">{{ loginResponse?.details?.detail }}</p>
+        <p class="text-red-500" v-if="loginResponse?.details?.detail">{{ loginResponse?.details?.detail }}</p>
       </div>
     </div>
   </div>
