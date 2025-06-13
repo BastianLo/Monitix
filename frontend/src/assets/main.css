@@ -11,3 +11,10 @@ html {
     font-variation-settings: normal;
     font-weight: 400;
 }
+
+.status-bubble {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}

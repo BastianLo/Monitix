@@ -9,6 +9,8 @@ Django==5.2.2
 django-cors-headers==4.7.0
 django-encrypted-model-fields==0.6.5
 django-fernet-encrypted-fields==0.3.0
+django-picklefield==3.3
+django-q2==1.8.0
 djangorestframework==3.16.0
 djangorestframework-jwt==1.11.0
 djangorestframework_simplejwt==5.5.0

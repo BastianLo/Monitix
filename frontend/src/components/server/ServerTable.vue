@@ -1,5 +1,15 @@
 <template>
     <DataTable :value="enrichedServers" tableStyle="min-width: 50rem">
+        <Column field="ping_successful" class="text-center w-min" style="padding-right: 0px;">
+            <template #body="{ data }">
+                <span class="status-bubble" v-tooltip="timeAgo(data.last_ping)"
+                    :style="{
+                        'background-color': secondsPassed(data.last_ping) > 300 ? '#555555' : data.ping_successful ? '#22c522' : '#ef4444'
+                    }"
+                ></span>
+            </template>
+
+        </Column>
         <Column field="name" header="Name"></Column>
         <Column field="hostname" header="Hostname"></Column>
         <Column field="port" header="Port"></Column>
@@ -36,7 +46,7 @@ import { storeToRefs } from 'pinia'
 import { Badge, Button } from 'primevue'
 import { ref } from 'vue'
 import { useConfirm } from "primevue/useconfirm";
-import { isBright } from '@/utils/utils'
+import { isBright, secondsPassed, timeAgo } from '@/utils/utils'
 import ServerEditTagsDialog from '@/components/server/ServerEditTagsDialog.vue'
 import ServerEditDialog from '@/components/server/ServerEditDialog.vue'
 
@@ -70,3 +80,12 @@ const openDialogEditTags = (serverId: number) => {
 }
 
 </script>
+<style scoped>
+.tagCol .tagAdd {
+    visibility: hidden;
+}
+
+.tagCol:hover .tagAdd {
+    visibility: visible;
+}
+</style>

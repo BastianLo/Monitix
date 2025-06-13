@@ -28,12 +28,3 @@ const openDialogCreateServer = () => {
 }
 
 </script>
-<style scoped>
-.tagCol .tagAdd {
-    visibility: hidden;
-}
-
-.tagCol:hover .tagAdd {
-    visibility: visible;
-}
-</style>

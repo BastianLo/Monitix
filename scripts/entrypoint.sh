@@ -20,9 +20,12 @@ nginx
 
 # Run migrations
 cd /app
-python manage.py migrate
+python3 manage.py migrate
+python3 manage.py create_schedules
 
 create-superuser ${USERNAME:-admin} ${EMAIL:-admin@admin.de} ${PASSWORD:-changeme}
 django-admin compilemessages > /dev/null 2>&1
+echo 'Starting django q'
+python3 manage.py qcluster &
 echo 'Starting application'
 gunicorn --bind :6734 --workers 1 --preload main.wsgi

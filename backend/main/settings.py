@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     "corsheaders",
+    'django_q',
     
     'ApiManager',
     'ServerManager',
@@ -166,3 +167,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+Q_CLUSTER = {
+    'name': 'DjangORM',
+    'workers': 1,
+    'timeout': 90,
+    'retry': 120,
+    'queue_limit': 50,
+    'bulk': 10,
+    'orm': 'default'
+}

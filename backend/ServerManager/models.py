@@ -3,6 +3,9 @@ from ApiManager.models import BaseModel
 from encrypted_fields.fields import EncryptedTextField
 import re
 from django.core.validators import MinValueValidator, MaxValueValidator, RegexValidator
+import platform
+import subprocess
+from datetime import datetime
 
 # Create your models here.
 def is_color_valid(value):
@@ -21,6 +24,10 @@ class Server(BaseModel):
     ssh_key = EncryptedTextField(blank=True, null=True)
     tags = models.ManyToManyField('Tag', related_name='servers', blank=True)
 
+    last_ping = models.DateTimeField(null=True)
+    last_successful_ping = models.DateTimeField(null=True)
+    ping_successful = models.BooleanField(default=False)
+
     auth_type = models.CharField(
         max_length=20,
         choices=[
@@ -29,6 +36,15 @@ class Server(BaseModel):
         ],
         default='password'
     )
+
+    def ping(self):
+        result = ping(self.hostname)
+        self.ping_successful = result
+        self.last_ping = datetime.now().astimezone()
+        if result:
+            self.last_successful_ping = datetime.now().astimezone()
+        self.save()
+        return result
 
     def __str__(self):
         return self.name
@@ -39,3 +55,13 @@ class Tag(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+
+
+
+
+def ping(host):
+    param = '-n' if platform.system().lower()=='windows' else '-c'
+    command = ['ping', param, '1', host]
+    return subprocess.call(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) == 0
