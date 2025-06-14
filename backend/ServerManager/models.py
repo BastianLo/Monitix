@@ -1,11 +1,13 @@
-from django.db import models
-from ApiManager.models import BaseModel
-from encrypted_fields.fields import EncryptedTextField
-import re
-from django.core.validators import MinValueValidator, MaxValueValidator, RegexValidator
 import platform
+import re
 import subprocess
 from datetime import datetime
+
+from ApiManager.models import BaseModel
+from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
+from django.db import models
+from encrypted_fields.fields import EncryptedTextField
+
 
 # Create your models here.
 def is_color_valid(value):

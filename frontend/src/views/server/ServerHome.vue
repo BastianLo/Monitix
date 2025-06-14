@@ -4,7 +4,7 @@
             <Button class="mr-2" severity="primary" size="small" @click="openDialogCreateServer()">Create</Button>
         </template>
     </Toolbar>
-    <ServerTable/>
+    <ServerTable />
     <ServerEditDialog v-if="activeServer" v-model:show="showServerEditDialog" v-model:serverTarget="activeServer" />
 
 </template>

@@ -35,10 +35,10 @@ const items = ref([
 <template>
     <Menubar :model="items">
         <template #start>
-            <RouterLink :to="{name: 'home'}">
+            <RouterLink :to="{ name: 'home' }">
                 <img src="@/assets/logo.png" alt="Logo" width="40" height="40" />
             </RouterLink>
-            <RouterLink :to="{name: 'home'}" class="text-3xl font-bold">Monitix</RouterLink>
+            <RouterLink :to="{ name: 'home' }" class="text-3xl font-bold">Monitix</RouterLink>
         </template>
 
         <template #end>

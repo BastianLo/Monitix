@@ -1,33 +1,34 @@
 from django.shortcuts import render
+from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import viewsets, status
-from ServerManager.serializers import *
-from ServerManager.models import Server
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.viewsets import GenericViewSet
+from ServerManager.models import Server
+from ServerManager.serializers import *
+
 # Create your views here.
 
-    
+
 @api_view(['POST'])
 def execute_command(request, id): #create a server via api
     print(request)
     return Response({
         'status': 'Command successfully executed',
     }, status=200)
-    
+
 class ServerViewset(GenericViewSet):
 
     queryset = Server.objects.all()
-    
+
     def get_serializer_class(self):
         if self.action == 'create':
             return ServerCreateSerializer
         return ServerSerializer
-    
+
     # def get_permissions(self):
     #     return [IsAuthenticated]
-    
+
     def get_permissions(self):
         permission_classes = [] #[IsAuthenticated]
         return [permission() for permission in permission_classes]
@@ -93,7 +94,7 @@ class TagViewset(viewsets.ModelViewSet):
         results = Tag.objects.all()
         serializer = self.get_serializer(results, many=True)
         return Response(serializer.data, status=200)
-    
+
     def create(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)

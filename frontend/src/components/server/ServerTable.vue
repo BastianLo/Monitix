@@ -2,11 +2,9 @@
     <DataTable :value="enrichedServers" tableStyle="min-width: 50rem">
         <Column field="ping_successful" class="text-center w-min" style="padding-right: 0px;">
             <template #body="{ data }">
-                <span class="status-bubble" v-tooltip="timeAgo(data.last_ping)"
-                    :style="{
-                        'background-color': secondsPassed(data.last_ping) > 300 ? '#555555' : data.ping_successful ? '#22c522' : '#ef4444'
-                    }"
-                ></span>
+                <span class="status-bubble" v-tooltip="timeAgo(data.last_ping)" :style="{
+                    'background-color': secondsPassed(data.last_ping) > 300 ? '#555555' : data.ping_successful ? '#22c522' : '#ef4444'
+                }"></span>
             </template>
 
         </Column>

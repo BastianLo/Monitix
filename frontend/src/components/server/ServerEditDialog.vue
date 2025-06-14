@@ -1,5 +1,6 @@
 <template>
-    <Dialog :visible="show" modal :header="(serverTarget.id ? 'Edit' : 'Create') + ' Server'" :style="{ width: '25rem' }">
+    <Dialog :visible="show" modal :header="(serverTarget.id ? 'Edit' : 'Create') + ' Server'"
+        :style="{ width: '25rem' }">
         <div class="flex items-center gap-4 mb-4">
             <label for="servername" class="font-semibold w-24">Name</label>
             <InputText id="servername" class="flex-auto" autocomplete="off" v-model="serverTarget.name" />

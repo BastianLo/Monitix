@@ -1,20 +1,19 @@
-
 @import "tailwindcss";
 @import "tailwindcss-primeui";
 
 html {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-variation-settings: normal;
-    font-weight: 400;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings: normal;
+  font-weight: 400;
 }
 
 .status-bubble {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
 }

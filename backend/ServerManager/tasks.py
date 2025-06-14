@@ -1,6 +1,8 @@
+from datetime import datetime
+
 from django.contrib.messages import success
 from ServerManager.models import Server
-from datetime import datetime
+
 
 def ping_server():
     servers = Server.objects.all()

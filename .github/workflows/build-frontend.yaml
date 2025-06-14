@@ -1,20 +1,19 @@
 name: Build Frontend
 
 on:
-  push:
-    branches: [ "**" ]
+    push:
+        branches: ["**"]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
-    - name: Start build
-      run: |
-        cd frontend
-        npm install
-        npm run build
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+            - name: Start build
+              run: |
+                  cd frontend
+                  npm install
+                  npm run build
