@@ -1,5 +1,5 @@
 # Build stage for frontend
-FROM node:24-alpine as frontend-builder
+FROM node:24-alpine AS frontend-builder
 WORKDIR /app
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm install
@@ -7,7 +7,7 @@ COPY frontend .
 RUN npm run build
 
 # Build stage for backend
-FROM python:3.13-alpine as backend-builder
+FROM python:3.13-alpine AS backend-builder
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
