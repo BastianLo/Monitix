@@ -21,8 +21,8 @@ services:
     agent:
         container_name: monitix_agent
         build:
-            dockerfile: agent/Dockerfile
-            context: ../../
+            dockerfile: Dockerfile
+            context: ../../agent
         environment:
             - HOST_PROC=/host/proc
             - HOST_SYS=/host/sys
