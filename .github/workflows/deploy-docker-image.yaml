@@ -5,6 +5,7 @@ on:
     push:
         branches:
             - "main"
+            - "monitix-agent" #TODO: REMOVE
         tags:
             - "v*"
     pull_request:
