@@ -37,6 +37,7 @@ type dockerContainer struct {
 	RAM   uint64  `json:"ram"`
 	CPU   float32 `json:"cpu"`
 	STATE string  `json:"state"`
+	IMAGE string  `json:"image"`
 }
 
 type MemoryMetrics struct {
@@ -224,6 +225,7 @@ func getDockerStats() []dockerContainer {
 				CPU:   float32(cpuPercent),
 				RAM:   statsJSON.MemoryStats.Usage,
 				STATE: ctr.State,
+				IMAGE: ctr.Image,
 			}
 
 			mu.Lock()
