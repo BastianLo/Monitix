@@ -15,3 +15,22 @@ services:
             context: ../../
         volumes:
             - ./data:/app/data
+        depends_on:
+            - agent
+
+    agent:
+        container_name: monitix_agent
+        build:
+            dockerfile: agent/Dockerfile
+            context: ../../
+        environment:
+            - HOST_PROC=/host/proc
+            - HOST_SYS=/host/sys
+            - AUTHKEY=vbuipiubtwuivbriuevrbuigb4iu
+        volumes:
+            - /proc:/host/proc:ro
+            - /sys:/host/sys:ro
+            - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+            - 8084:8080
+        privileged: true
