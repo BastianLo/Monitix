@@ -1,9 +1,13 @@
 from django.contrib import admin
-from ServerManager.models import Server, Tag
+from ServerManager.models import *
 
 # Register your models here.
 
 admin.site.register([
     Server,
-    Tag
+    Tag,
+    serverInfo,
+    serverMetric,
+    containerMetric,
+    serverContainer
 ])
