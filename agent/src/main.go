@@ -59,11 +59,12 @@ type DockerMetrics struct {
 }
 
 type ServerMetrics struct {
-	Memory MemoryMetrics   `json:"memory"`
-	Host   host.InfoStat   `json:"host"`
-	CPU    CPUMetrics      `json:"cpu"`
-	Disk   *disk.UsageStat `json:"disk"`
-	Docker DockerMetrics   `json:"docker"`
+	Memory   MemoryMetrics   `json:"memory"`
+	Host     host.InfoStat   `json:"host"`
+	CPU      CPUMetrics      `json:"cpu"`
+	Disk     *disk.UsageStat `json:"disk"`
+	Docker   DockerMetrics   `json:"docker"`
+	DateTime time.Time       `json:"ts"`
 }
 
 func authMiddleware(next http.HandlerFunc) http.HandlerFunc {
@@ -166,6 +167,7 @@ func collectMetrics() ServerMetrics {
 		Docker: DockerMetrics{
 			Stats: dockerStats,
 		},
+		DateTime: time.Now(),
 	}
 }
 
