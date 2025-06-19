@@ -63,6 +63,14 @@ class Server(BaseModel):
     def __str__(self):
         return self.name
 
+    @property
+    def latest_server_metric(self):
+        return self.servermetric_set.order_by('-ts').first()
+
+    @property
+    def server_info_obj(self):
+        return self.serverinfo_set.first()
+
 
 def parsePingResult(server, data):
     server_info, created = serverInfo.objects.get_or_create(server=server)
@@ -145,4 +153,3 @@ class containerMetric(models.Model):
 
     def __str__(self):
         return self.container.name + " - " + timezone.localtime(self.ts, timezone.get_current_timezone()).strftime('%Y-%m-%d %H:%M:%S')
-

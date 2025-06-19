@@ -17,6 +17,10 @@
             <label for="serverusername" class="font-semibold w-24">Username</label>
             <InputText id="serverusername" class="flex-auto" autocomplete="off" v-model="serverTarget.username" />
         </div>
+        <div class="flex items-center gap-4 mb-4">
+            <label for="authkey" class="font-semibold w-24">Auth Key</label>
+            <Password toggleMask id="authkey" class="flex-auto" autocomplete="off" v-model="serverTarget.auth_key" />
+        </div>
         <template #footer>
             <Button label="Cancel" severity="secondary" @click="setShow(false)" autofocus />
             <Button label="Save" @click="saveEditServer()" autofocus />
@@ -26,6 +30,7 @@
 
 <script setup lang="ts">
 import { useServerStore } from '@/stores/ServerStore';
+import { Password } from 'primevue';
 
 const props = defineProps({
     show: {

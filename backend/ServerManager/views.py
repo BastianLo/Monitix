@@ -24,7 +24,7 @@ class ServerViewset(GenericViewSet):
     def get_serializer_class(self):
         if self.action == 'create':
             return ServerCreateSerializer
-        return ServerSerializer
+        return ServerDetailsSerializer
 
     # def get_permissions(self):
     #     return [IsAuthenticated]
