@@ -2,7 +2,7 @@ FROM golang:alpine AS builder
 
 WORKDIR /app
 
-COPY agent/src/ ./
+COPY src/ ./
 
 # Build
 ARG TARGETOS TARGETARCH
